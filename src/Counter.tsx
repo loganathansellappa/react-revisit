@@ -1,4 +1,5 @@
-import {forwardRef, useImperativeHandle, useState} from "react";
+import {forwardRef, useCallback, useImperativeHandle, useState} from "react";
+import './Counter.css';
 
 export type CounterRef = {
     increment: () => void;
@@ -6,16 +7,12 @@ export type CounterRef = {
 }
 interface CounterProps {
     initialCount: number;
-    ref: CounterRef;
 }
 export const Counter = forwardRef(({initialCount}: CounterProps, ref) => {
 
     const [count, setCount] = useState(initialCount)
-    const increment = () => {
-        console.log('increment');
-        setCount(count + 1)
-    }
-    const decrement = () => setCount(count - 1)
+    const increment = useCallback(() => setCount(count + 1), [setCount, count]);
+    const decrement = useCallback(() => setCount(count - 1), [setCount, count])
 
     useImperativeHandle(ref, () => ({
         increment,
@@ -24,8 +21,7 @@ export const Counter = forwardRef(({initialCount}: CounterProps, ref) => {
 
     return (
         <div className="counter">
-            <h2 className="counter__header">Counter</h2>
-            <h3 className="counter__value">{count}</h3>
+            <h2 className="counter__header">Counter {count}</h2>
             <div className="counter__actions">
                 <button className="counter__actions__button" onClick={() => increment()}>+</button>
                 <button className={`counter__actions__button ${count === 0 ? 'counter__actions__button-disabled' : ''}`} onClick={() => decrement()} disabled={count === 0}>-</button>

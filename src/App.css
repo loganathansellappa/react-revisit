@@ -24,6 +24,19 @@
   align-items: center;
 }
 
+.button {
+  padding: 0.5rem 1rem;
+  border: none;
+  font-size: 1.5rem;
+  border-radius: 0.5rem;
+  background-color: rebeccapurple;
+  box-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  white-space: nowrap;
+  width: 50%;
+  height: 3rem;
+}
+
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);
@@ -41,6 +54,10 @@
 
 .card {
   padding: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
 }
 
 .read-the-docs {
