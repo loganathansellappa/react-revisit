@@ -3,6 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import {Counter, CounterRef} from "./Counter.tsx";
+import {TicTacToe} from "./TicTacToe.tsx";
 
 function App() {
   const counterRef = useRef<CounterRef>(null);
@@ -18,6 +19,7 @@ function App() {
         </a>
       </div>
       <h1>React revisit</h1>
+      <TicTacToe boardSize={3}/>
       <div className="card">
           <Counter initialCount={0} ref={counterRef}/>
           <h2>Counter Change from Parent Imperative Hook</h2>
